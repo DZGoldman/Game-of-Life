@@ -1,0 +1,32 @@
+#slider{
+  /*top: 600px;*/
+  /*background-color: blue*/
+  border: 2px solid black;
+  margin-left: 100px;
+  margin-right: 100px
+}
+body{
+  background-color: grey;
+}
+
+#board{
+  /*background-color: white;*/
+  /*width: 1px;
+  height: 1px;*/
+  margin: 50px;
+  margin-left: 100px;
+  font-size: 0px;
+}
+
+.cell {
+  /*background-color: blue;*/
+  float: left;
+  border: 1px solid black;
+  /*margin: -1px*/
+}
+
+.row {
+
+   display: inline-block;
+   margin: 0px
+}
