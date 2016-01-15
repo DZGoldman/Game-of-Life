@@ -4,6 +4,8 @@ var board = $('#board'),
 
 //optional/alterable
   var boardWidth = $(window).width()/2;
+  // boardWidth = '20%'
   var boardHeight = $(window).width()/2;
+    // boardHeight = '20%'
   var liveColor = 'blue'
   var deadColor = 'transparent'

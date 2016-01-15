@@ -15,7 +15,7 @@ function play() {
 
 //toggle live/dead for a cell
 function toggle(cell) {
-  switch (  +cell.attr('status')) {
+  switch (+cell.attr('status')) {
     case 0:
       cell.attr('status', 1);
       cell.css('background-color', liveColor)
@@ -28,7 +28,11 @@ function toggle(cell) {
 }
 
 function randomize() {
-
+  $('.cell').each(function (index, cell) {
+    if (Math.random()>0.8) {
+      toggle($(cell) )
+    }
+  })
 }
 
 function updateBoard() {
