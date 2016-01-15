@@ -10,7 +10,6 @@ $(function () {
 })
 
 function play() {
-
 }
 
 //toggle live/dead for a cell
