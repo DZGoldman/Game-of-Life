@@ -31,12 +31,53 @@ function randomize() {
     if (Math.random()>0.8) {
       toggle($(cell) )
     }
+  })}
+
+function updateBoard() {
+  var liveCells = $('[status=1]');
+  var deadCells = $('[status=0]');
+  var toBeToggled = [];
+  liveCells.each(function (index, vanCell) {
+    var cell = $(vanCell)
+    var liveNeighbors = liveNeighborCount(cell)
+    if (liveNeighbors<2 || liveNeighbors>3 ) {
+      toBeToggled.push(cell)
+    }
+  });
+  deadCells.each(function (index, vanCell) {
+    var cell = $(vanCell)
+    var liveNeighbors = liveNeighborCount(cell)
+    if (liveNeighbors==3 ) {
+      toBeToggled.push(cell)
+    }
+  });
+  toBeToggled.forEach(function (cell) {
+    toggle(cell)
   })
 }
 
-function updateBoard() {
+var allIndices=[];
+[-1,0,1].forEach(function (column) {
+  [-1,0,1].forEach(function (row) {
+    if( !(column==0 & row==0 ) ){
+      allIndices.push([column, row])
+    }
+  })
+})
 
-}
-function liveNeighborCount() {
-
+function liveNeighborCount(cell) {
+  var liveNeighbors = 0
+  var column = +cell.attr('column')
+  var row = +cell.attr('row')
+  allIndices.forEach(function (pair) {
+    var newColumn = column+pair[0]
+    var newRow = row+pair[1]
+    if (((newColumn&newRow)>=0) & ((newColumn&newRow)<=8)) {
+      var neighbor = $('.cell[row='+newRow+'][column='+newColumn+']' );
+      if (neighbor.attr('status')==1 ) {
+        liveNeighbors++
+      }
+    }
+  })
+  return liveNeighbors
 }

@@ -1,11 +1,9 @@
-console.log('Hello, Dave');
-
 
 
 $(function () {
   slider.slider({
     min: 10,
-    max: 70,
+    max: 60,
     step: 1,
   });
 
