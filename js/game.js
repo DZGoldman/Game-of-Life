@@ -2,58 +2,34 @@
 //set interval function, runs game. with each iteration, checks neighbors of all cells
 
 $(function () {
+
   //toggle cell on click
-  board.click(function (e) {
+  $board.click(function (e) {
     var clickedCell =$(e.toElement)
-    toggle(clickedCell)
+    var column = clickedCell.attr('column')
+    var row = clickedCell.attr('row')
+    board[row][column].toggle()
   })
-})
+
+}) // end on load
 
 function play() {
 }
 
 //toggle live/dead for a cell
-function toggle(cell) {
-  switch (+cell.attr('status')) {
+Cell.prototype.toggle = function () {
+  switch (this.status) {
     case 0:
-      cell.attr('status', 1);
-      cell.css('background-color', liveColor)
+      this.status=1;
+      this.$cell.attr('status', 1);
+      this.$cell.css('background-color', liveColor)
       break;
     case 1:
-      cell.attr('status', 0);
-      cell.css('background-color', deadColor)
+      this.status=0;
+      this.$cell.attr('status', 0);
+      this.$cell.css('background-color', deadColor)
       break
   }
-}
-
-function randomize() {
-  $('.cell').each(function (index, cell) {
-    if (Math.random()>0.8) {
-      toggle($(cell) )
-    }
-  })}
-
-function updateBoard() {
-  var liveCells = $('[status=1]');
-  var deadCells = $('[status=0]');
-  var toBeToggled = [];
-  liveCells.each(function (index, vanCell) {
-    var cell = $(vanCell)
-    var liveNeighbors = liveNeighborCount(cell)
-    if (liveNeighbors<2 || liveNeighbors>3 ) {
-      toBeToggled.push(cell)
-    }
-  });
-  deadCells.each(function (index, vanCell) {
-    var cell = $(vanCell)
-    var liveNeighbors = liveNeighborCount(cell)
-    if (liveNeighbors==3 ) {
-      toBeToggled.push(cell)
-    }
-  });
-  toBeToggled.forEach(function (cell) {
-    toggle(cell)
-  })
 }
 
 var allIndices=[];
@@ -65,19 +41,53 @@ var allIndices=[];
   })
 })
 
-function liveNeighborCount(cell) {
+Cell.prototype.liveNeighborCount = function () {
   var liveNeighbors = 0
-  var column = +cell.attr('column')
-  var row = +cell.attr('row')
+  var column = this.column
+  var row = this.row
   allIndices.forEach(function (pair) {
     var newColumn = column+pair[0]
     var newRow = row+pair[1]
-    if (((newColumn&newRow)>=0) & ((newColumn&newRow)<=8)) {
-      var neighbor = $('.cell[row='+newRow+'][column='+newColumn+']' );
-      if (neighbor.attr('status')==1 ) {
+    if (((newColumn)>=0) & ((newRow)>=0) & ((newColumn)<board.length) & ((newRow)<board.length) ) {
+      var neighbor = board[newRow][newColumn];
+      if (neighbor.status==1 ) {
         liveNeighbors++
       }
     }
   })
   return liveNeighbors
+}
+
+
+
+function randomize() {
+  twoDLoop(board, function (cell) {
+    if (Math.random()>0.8) {
+      cell.toggle()
+    }
+  })
+}
+
+function updateBoard() {
+  var toBeToggled = [];
+
+  twoDLoop(board, function (cell) {
+    switch (cell.status) {
+      case 1:
+        var liveNeighbors = cell.liveNeighborCount();
+        if (liveNeighbors<2 || liveNeighbors>3) {
+          toBeToggled.push(cell)
+        }
+        break;
+      case 0:
+        var liveNeighbors = cell.liveNeighborCount();
+        if (liveNeighbors==3) {
+          toBeToggled.push(cell)
+        }
+        break
+    }
+  })
+  toBeToggled.forEach(function (cell) {
+    cell.toggle()
+  })
 }
