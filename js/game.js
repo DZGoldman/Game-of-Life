@@ -12,8 +12,17 @@ $(function () {
   })
 
 }) // end on load
+var intervalID
+function play(step) {
+  // typeof step=='undefined'? step=0.3: 'hi'
+  intervalID = window.setInterval(function () {
+    console.log(step);
+    updateBoard()
+  }, step*1000)
+}
 
-function play() {
+function pause() {
+  window.clearInterval(intervalID)
 }
 
 //toggle live/dead for a cell
@@ -61,11 +70,13 @@ Cell.prototype.liveNeighborCount = function () {
 
 
 function randomize() {
+  clear()
   twoDLoop(board, function (cell) {
-    if (Math.random()>0.8) {
+    if (Math.random()>0.9) {
       cell.toggle()
     }
-  })
+  });
+  return liveCellCount()
 }
 
 function updateBoard() {
@@ -77,6 +88,7 @@ function updateBoard() {
         var liveNeighbors = cell.liveNeighborCount();
         if (liveNeighbors<2 || liveNeighbors>3) {
           toBeToggled.push(cell)
+        }else{
         }
         break;
       case 0:
@@ -90,4 +102,27 @@ function updateBoard() {
   toBeToggled.forEach(function (cell) {
     cell.toggle()
   })
+
+  if (toBeToggled.length==0) {
+    pause()
+  }
+  return liveCellCount()
+}
+
+function clear() {
+  twoDLoop(board,function (cell) {
+    if (cell.status==1) {
+      cell.toggle()
+    }
+  })
+}
+
+function liveCellCount() {
+  liveCells = 0
+  twoDLoop(board, function (cell) {
+    if (cell.status==1) {
+      liveCells++
+    }
+  })
+  return liveCells
 }

@@ -3,7 +3,7 @@
 $(function () {
   slider.slider({
     min: 10,
-    max: 60,
+    max: 100,
     step: 1,
   });
   $board.css('width', boardWidth)
@@ -14,8 +14,12 @@ $(function () {
     }
   })
   //initial state:
-  slider.slider( "value", 20 )
-  randomize()
+  slider.slider( "value", 50 )
+  // randomize()
+  $('#board').fadeIn(700, function () {
+      $('#slider').show('slide', {direction: 'left'}, 200)
+  });
+
 }) //end onload
 
 var Cell = function (row,column, $cell) {
@@ -57,4 +61,6 @@ function createCells(number) {
     board.push(row)
     $board.append($row)
   }
+  pause()
+  randomize()
 }

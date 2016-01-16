@@ -5,9 +5,9 @@ var $board = $('#board'),
   board = [];
 
 //optional/alterable
-  var boardWidth = $(window).height()*2/3;
+  var boardWidth = $(window).height()*3/4;
   // boardWidth = '20%'
-  var boardHeight = $(window).height()*2/3;
+  var boardHeight = $(window).height()*3/4;
     // boardHeight = '20%'
   var liveColor = 'blue'
   var deadColor = 'transparent';
