@@ -13,13 +13,7 @@ $(function () {
       createCells(ui.value)
     }
   })
-  //initial state:
   slider.slider( "value", 50 )
-  // randomize()
-  $('#board').fadeIn(700, function () {
-      $('#slider').show('slide', {direction: 'left'}, 200)
-  });
-
 }) //end onload
 
 var Cell = function (row,column, $cell) {
@@ -62,5 +56,4 @@ function createCells(number) {
     $board.append($row)
   }
   pause()
-  randomize()
 }

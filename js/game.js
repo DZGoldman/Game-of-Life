@@ -2,14 +2,31 @@
 //set interval function, runs game. with each iteration, checks neighbors of all cells
 
 $(function () {
-
+  var holdingMouse = false
   //toggle cell on click
-  $board.click(function (e) {
+  $board.mousedown(function (e) {
+    holdingMouse = true
     var clickedCell =$(e.toElement)
     var column = clickedCell.attr('column')
     var row = clickedCell.attr('row')
     board[row][column].toggle()
   })
+
+  $board.mouseup(function (e) {
+    holdingMouse = false
+  })
+
+  $board.mouseover(function (e) {
+    if (holdingMouse) {
+      var clickedCell =$(e.toElement)
+      var column = clickedCell.attr('column')
+      var row = clickedCell.attr('row')
+      board[row][column].toggle()
+    }
+
+  })
+
+
 
 }) // end on load
 var intervalID
@@ -125,4 +142,17 @@ function liveCellCount() {
     }
   })
   return liveCells
+}
+
+function save() {
+  var liveCells = [];
+  twoDLoop(board, function (cell) {
+    if (cell.status) {
+      liveCells.push( [cell.column, cell.row] )
+      console.log([cell.column, cell.row]);
+    }
+  })
+  return liveCells
+
+
 }
