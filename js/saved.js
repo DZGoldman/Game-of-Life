@@ -3,24 +3,24 @@ console.log('saved');
 $(function () {
 
   window.setTimeout(function () {
-    $('#slider').show('slide', {direction: 'left'}, 400, function () {
-
-          play(0.1)
-
+    $panel.show(300, function () {
+      play(0.1)
     })
   },4000)
 
-  var pieces = split(randomArray, 20)
+  var pieces = split(randomArray, 40)
 
 var counter = 0
   var intervalID = window.setInterval(function () {
     if (counter<pieces.length) {
-      console.log(pieces);
       loadGrid(pieces[counter])
       counter++
-    }
 
-  }, 100)
+    }else{
+      window.clearInterval(intervalID)
+    }
+    console.log(counter);
+  }, 50)
 
   // window.setTimeout(function () {
   // loadGrid(quarter1)

@@ -1,11 +1,22 @@
-#slider{
-  /*top: 600px;*/
-  /*background-color: blue*/
+#panel{
+  border: 1px solid black;
+  display: none;
+  margin: 20px;
+}
+
+ #time-slider, #size-slider{
   border: 2px solid black;
   margin-left: 100px;
   margin-right: 100px;
-  display: none;
+  margin: 10px;
 }
+
+/*.ui-slider*/
+.size-slider-row{
+  display: inline-block;
+  /*float: left;*/
+}
+
 body{
   background-color: grey;
 }
@@ -21,13 +32,20 @@ body{
   /*display: none*/
 }
 
+#live-cell-count{
+
+}
+
 .cell {
   float: left;
   border: 1px solid black;
 }
 
 .row {
-
    display: inline-block;
    margin: 0px
+}
+
+.button{
+  margin-left: 20px
 }

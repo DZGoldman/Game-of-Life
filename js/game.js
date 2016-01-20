@@ -34,13 +34,21 @@ function play(step) {
   // typeof step=='undefined'? step=0.3: 'hi'
   intervalID = window.setInterval(function () {
     console.log(step);
-    updateBoard()
+    var count = updateBoard()
+    $('#live-cell-count').text(count)
   }, step*1000)
 }
 
 function pause() {
   window.clearInterval(intervalID)
 }
+
+function changeTempo(newTempo) {
+  window.clearInterval(intervalID);
+  play(newTempo)
+
+}
+
 
 //toggle live/dead for a cell
 Cell.prototype.toggle = function () {

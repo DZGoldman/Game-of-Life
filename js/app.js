@@ -1,7 +1,9 @@
 console.log('Hello, Dave');
 //define main variables here:
 var $board = $('#board'),
-  slider = $('#slider'),
+  slider = $('#size-slider'),
+  $panel = $('#panel'),
+  $timeSlider = $('#time-slider'), 
   board = [];
 
 //optional/alterable

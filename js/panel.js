@@ -1,19 +1,55 @@
 
 
 $(function () {
+
+  $board.css('width', boardWidth)
+  $board.css('height', boardHeight)
+
   slider.slider({
     min: 10,
     max: 100,
     step: 1,
   });
-  $board.css('width', boardWidth)
-  $board.css('height', boardHeight)
+
   slider.slider({
     change: function( event, ui ) {
       createCells(ui.value)
+      $('.size-readout').text(ui.value+'x'+ui.value)
     }
   })
   slider.slider( "value", 50 )
+
+  $timeSlider.slider({
+    min: 0.01,
+    max: 1,
+    step: 0.01,
+  });
+
+  $timeSlider.slider({
+    slide: function( event, ui ) {
+      changeTempo(ui.value)
+      $('.time-readout').text(ui.value)
+    }
+  })
+  $timeSlider.slider( "value", 0.1 )
+
+  $('#pause').click(function () {
+    pause()
+  })
+
+  $('#clear').click(function () {
+    clear()
+  })
+
+  $('#random').click(function () {
+    randomize()
+  })
+
+  $('#play').click(function () {
+    play($timeSlider.slider('value'))
+  })
+
+
 }) //end onload
 
 var Cell = function (row,column, $cell) {
