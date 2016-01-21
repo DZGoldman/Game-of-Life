@@ -1,24 +1,33 @@
 #panel{
-  border: 1px solid black;
-  display: none;
+  /*border: 1px solid black;*/
+  display: inline-block;
   margin: 20px;
+  padding: 10px;
+  /*position: absolute;*/
+  /*float: right*/
+
+  background-color: darkgrey;
+  border-radius: 20px
+  /*color: lightblue*/
 }
 
  #time-slider, #size-slider{
-  border: 2px solid black;
+  /*border: 2px solid black;*/
   margin-left: 100px;
   margin-right: 100px;
   margin: 10px;
 }
 
 /*.ui-slider*/
-.size-slider-row{
+.size-slider-row, .time-slider-row, #cell-count-label, #live-cell-count{
   display: inline-block;
   /*float: left;*/
 }
 
 body{
   background-color: grey;
+  font-family: 'Exo', sans-serif;
+  /*opacity: 0.2*/
 }
 
 #board{
@@ -29,7 +38,8 @@ body{
   margin-bottom: 10px;
   margin-left: 100px;
   font-size: 0px;
-  /*display: none*/
+  /*width: 75%;*/
+  display: inline-block
 }
 
 #live-cell-count{
@@ -46,6 +56,68 @@ body{
    margin: 0px
 }
 
+.button, #cell-count-container{
+  margin-left: 10px
+}
+
+.readout{
+  background-color: grey;
+  padding: 4px;
+  border: 2px solid black;
+  border-radius: 3px
+}
+
+#buttons{
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
+
+#live-cell-count{
+  width: 25px;
+}
+
+.time-readout{
+  width: 35px
+}
 .button{
-  margin-left: 20px
+  background-color: white;
+  font-family: 'Exo', sans-serif;
+}
+
+#info-toggler{
+  position: absolute;
+  /*float right;*/
+  top: 3%;
+  right: 3%;
+  margin: 20px;
+  margin-right: 30px;
+  font-size: 50px;
+  font-weight: bold;
+  /*background-color: blue;*/
+  z-index: 100;
+  display: none
+}
+#info{
+  position: absolute;
+  /*float right;*/
+  top: 100px;
+  right: 10px;
+  margin: 10px;
+  margin-right: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  width: 30%;
+  height: 50%;
+  display: none
+}
+
+#info-toggler:hover ~ .all-except-info{
+  opacity: 0.3 !important;
+
+}
+
+#info-toggler:hover ~ #info{
+  display: inline-block;
+
 }

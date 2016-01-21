@@ -1,15 +1,15 @@
-console.log('saved');
 
 $(function () {
 
   window.setTimeout(function () {
+
     $panel.show(300, function () {
+      $('#info-toggler').toggle()
       play(0.1)
     })
   },4000)
 
-  var pieces = split(randomArray, 40)
-
+var pieces = split(randomArray, 40)
 var counter = 0
   var intervalID = window.setInterval(function () {
     if (counter<pieces.length) {
@@ -20,22 +20,31 @@ var counter = 0
       window.clearInterval(intervalID)
     }
     console.log(counter);
-  }, 50)
+  }, 50);
 
-  // window.setTimeout(function () {
-  // loadGrid(quarter1)
-  // },500)
-  // window.setTimeout(function () {
-  // loadGrid(quarter2)
-  // },1000)
-  // window.setTimeout(function () {
-  // loadGrid(quarter3)
-  // },1500)
-  // window.setTimeout(function () {
-  // loadGrid(quarter4)
-  // },2000)
+  // $('#info-toggler').hover(function () {
+  //   $('#all-except-info').css('opacity', 0.3);
+  //   $info.css('opacity', 1);
+  //   $info.toggle()
+  // }, function () {
+  //   $('#all-except-info').css('opacity', 1)
+  //   $info.toggle()
+  // })
 
-})
+  $info.css('width', window.height()/5)
+
+}) // end on load
+
+var blinkerID
+function blinker() {
+  blinkerID=window.setInterval(function () {
+    $pause.css('background-color', 'red')
+    window.setTimeout(function () {
+      $pause.css('background-color', 'white')
+    },100)
+  }, 1000)
+}
+
 
 var gameOfLife = [
 [12, 5],

@@ -30,21 +30,29 @@ $(function () {
 
 }) // end on load
 var intervalID
+var running = false
 function play(step) {
-  // typeof step=='undefined'? step=0.3: 'hi'
-  intervalID = window.setInterval(function () {
-    console.log(step);
-    var count = updateBoard()
-    $('#live-cell-count').text(count)
-  }, step*1000)
+  if (!running) {
+    blinker()
+    // typeof step=='undefined'? step=0.3: 'hi'
+    intervalID = window.setInterval(function () {
+      var count = updateBoard()
+      $('#live-cell-count').text(count)
+    }, step*1000);
+    running = true
+  }
+
 }
 
 function pause() {
-  window.clearInterval(intervalID)
+  window.clearInterval(blinkerID)
+  window.clearInterval(intervalID);
+  running= false
 }
 
 function changeTempo(newTempo) {
-  window.clearInterval(intervalID);
+
+  pause()
   play(newTempo)
 
 }
@@ -135,6 +143,7 @@ function updateBoard() {
 }
 
 function clear() {
+  pause();
   twoDLoop(board,function (cell) {
     if (cell.status==1) {
       cell.toggle()

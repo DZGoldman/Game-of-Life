@@ -6,44 +6,58 @@
   <title>Game of Life</title>
   <link rel="stylesheet" href="reset.css">
   <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
-  <div id='board'></div>
-
-  <div id='panel'>
-    <div id='size-slider-container'>
-      <div class='size-label size-slider-row'>Size:</div>
-      <div class='size-readout size-slider-row'> 50x50</div>
-      <div id='slider-container'>
-        <div id='size-slider'></div>
-      </div>
-
-    </div>
-    <div id='time-slider-container'>
-      <div class='time-label time-slider-row'>Tempo:</div>
-      <div class='time-readout time-slider-row'> 0.1</div>
-    <div id='time-slider'></div>
-    </div>
-
-    <div id='buttons'>
-      <button class='button' id='pause'>Pause</button>
-      <button class='button' id='play'>Play</button>
-      <button class='button' id='random'>Random</button>
-      <button class='button' id='clear'>Clear</button>
-    </div>
-    <div id='live-cell-count'>0</div>
+  <div id='info-toggler'>?</div>
+  <div id='info' class='regular-opacity'>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit quo ipsam nostrum quibusdam laboriosam reiciendis voluptates accusamus illo sapiente, ducimus animi fuga eligendi reprehenderit veritatis architecto saepe necessitatibus! Fuga dolor, laudantium
+    illo ipsam est quidem alias laborum iste, cumque delectus amet accusamus, quis quae distinctio, assumenda commodi quod sunt quasi? Adipisci ipsa sed repellat eligendi vitae deleniti provident, facilis eos culpa explicabo consectetur perferendis minima
+    doloremque veniam perspiciatis, et asperiores consequatur aperiam natus voluptatibus, sequi mollitia quisquam. Minus voluptatum, autem soluta nesciunt ut maiores dolores incidunt perferendis, quos quibusdam laboriosam aliquam laborum. Facere magnam
+    sequi, pariatur dolore aliquam maiores. Veritatis!
 
   </div>
+  <div class='all-except-info'>
+    <div id='board'></div>
 
-  <script src='node_modules/jquery/dist/jquery.js'></script>
-  <script src='ui.js'></script>
-  <script src='js/app.js'></script>
-  <script src='js/panel.js'></script>
-  <script src='js/game.js'></script>
-  <script src='js/saved.js'></script>
+    <div id='panel'>
+      <div id='size-slider-container'>
+        <div class='size-label size-slider-row'>Size:</div>
+        <div class='size-readout readout size-slider-row'> 50x50</div>
+        <div id='slider-container'>
+          <div id='size-slider'></div>
+        </div>
+
+      </div>
+      <div id='time-slider-container'>
+        <div class='time-label time-slider-row'>Tempo:</div>
+        <div class='time-readout readout time-slider-row'> 0.1</div>
+        <div id='time-slider'></div>
+      </div>
+
+      <div id='buttons'>
+        <button class='button' id='pause'>Pause</button>
+        <button class='button' id='play'>Play</button>
+        <button class='button' id='step'>Step</button>
+        <button class='button' id='random'>Random</button>
+        <button class='button' id='clear'>Clear</button>
+      </div>
+      <div id='cell-count-container'>
+        <div id='cell-count-label'>Live Cells:</div>
+        <div class='readout' id='live-cell-count'>0</div>
+      </div>
+
+
+    </div>
+    </div>
+    <script src='node_modules/jquery/dist/jquery.js'></script>
+    <script src='ui.js'></script>
+    <script src='js/app.js'></script>
+    <script src='js/panel.js'></script>
+    <script src='js/game.js'></script>
+    <script src='js/saved.js'></script>
 </body>
 
 </html>

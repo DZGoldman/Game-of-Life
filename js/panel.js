@@ -27,7 +27,9 @@ $(function () {
 
   $timeSlider.slider({
     slide: function( event, ui ) {
-      changeTempo(ui.value)
+      if (running) {
+        changeTempo(ui.value)
+      }
       $('.time-readout').text(ui.value)
     }
   })
@@ -39,6 +41,10 @@ $(function () {
 
   $('#clear').click(function () {
     clear()
+  })
+
+  $('#step').click(function () {
+    updateBoard()
   })
 
   $('#random').click(function () {
