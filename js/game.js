@@ -10,6 +10,7 @@ $(function () {
     var column = clickedCell.attr('column')
     var row = clickedCell.attr('row')
     board[row][column].toggle()
+    $('#live-cell-count').text(liveCellCount())
   })
 
   $board.mouseup(function (e) {
@@ -36,8 +37,7 @@ function play(step) {
     blinker()
     // typeof step=='undefined'? step=0.3: 'hi'
     intervalID = window.setInterval(function () {
-      var count = updateBoard()
-      $('#live-cell-count').text(count)
+      updateBoard()
     }, step*1000);
     running = true
   }
@@ -109,7 +109,9 @@ function randomize() {
       cell.toggle()
     }
   });
-  return liveCellCount()
+  var count= liveCellCount()
+  $('#live-cell-count').text(count)
+  return count
 }
 
 function updateBoard() {
@@ -139,7 +141,9 @@ function updateBoard() {
   if (toBeToggled.length==0) {
     pause()
   }
-  return liveCellCount()
+  var count= liveCellCount()
+  $('#live-cell-count').text(count)
+  return count
 }
 
 function clear() {
@@ -149,6 +153,7 @@ function clear() {
       cell.toggle()
     }
   })
+  $('#live-cell-count').text(0)
 }
 
 function liveCellCount() {

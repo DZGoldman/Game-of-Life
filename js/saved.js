@@ -2,7 +2,7 @@
 $(function () {
 
   window.setTimeout(function () {
-
+    $panel.css('opacity', 1)
     $panel.show(300, function () {
       $('#info-toggler').toggle()
       play(0.1)
@@ -19,7 +19,6 @@ var counter = 0
     }else{
       window.clearInterval(intervalID)
     }
-    console.log(counter);
   }, 50);
 
   // $('#info-toggler').hover(function () {
@@ -31,7 +30,7 @@ var counter = 0
   //   $info.toggle()
   // })
 
-  $info.css('width', window.height()/5)
+  // $info.css('width', $(window).height()/5)
 
 }) // end on load
 
