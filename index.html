@@ -13,18 +13,21 @@
 <body>
   <div id='info-toggler'>?</div>
   <div id='info'>
-    The Game of Life is a Cellular Automaton created by Mathematician John Conway. The rules are very simple: square cells are aligned in a grid (which should, in principle, be infinite in size). Each cell has two states: “alive” (blue background) or “dead.” With each step, a cell’s status is dependent on the status of its neighbors (which includes diagonals) as follows: <br><br>
-
-    - If a live cell has two or three live neighbors, it stays alive; otherwise it dies.<br>
-    - If a dead cell has two live neighbors it becomes live; otherwise it stays dead.<br><br>
-
-    The surprising complexity and intricacy of a Game of Life system’s behavior — even, often times, under seemingly simple initial conditions — has attracted research from a wide variety of academic fields, including Computer Science, Mathematics, Physics, Economics, Evolutionary Biology, and more.<br><br>
-
-    This particular implementation of the Game of Life was created with the following technologies: <br>HTML/CSS: Graphic interface of the board itself<br>
-    JavaScript/jQuery: Back-end logic<br>
-    jQuery-UI: Slider and drop-down menu widgets<br><br>
-
-    -Daniel Goldman
+    The Game of Life is a Cellular Automaton created by Mathematician John Conway. The rules are very simple: square cells are aligned in a grid (which should, in principle, be infinite in size). Each cell has two states: “alive” (blue background) or “dead.”
+    With each step, a cell’s status is dependent on the status of its neighbors (which includes diagonals) as follows:
+    <br>
+    <br> - If a live cell has two or three live neighbors, it stays alive; otherwise it dies.
+    <br> - If a dead cell has two live neighbors it becomes live; otherwise it stays dead.
+    <br>
+    <br> The surprising complexity and intricacy of a Game of Life system’s behavior — even, often times, under seemingly simple initial conditions — has attracted research from a wide variety of academic fields, including Computer Science, Mathematics, Physics,
+    Economics, Evolutionary Biology, and more.
+    <br>
+    <br> This particular implementation of the Game of Life was created with the following technologies:
+    <br>HTML/CSS: Graphic interface of the board itself
+    <br> JavaScript/jQuery: Back-end logic
+    <br> jQuery-UI: Slider and drop-down menu widgets
+    <br>
+    <br> -Daniel Goldman
   </div>
   <div class='all-except-info'>
     <div id='board'></div>
@@ -55,16 +58,24 @@
         <div id='cell-count-label'>Live Cells:</div>
         <div class='readout' id='live-cell-count'>0</div>
       </div>
+      <select id='menu'>
+        <option>Select Pattern</option>
+        <option id ='gliders'>Gliders</option>
+        <option>Glider Gun</option>
+        <option>Acorn</option>
+        <option>Line</option>
 
 
+      </select>
     </div>
-    </div>
-    <script src='node_modules/jquery/dist/jquery.js'></script>
-    <script src='ui.js'></script>
-    <script src='js/app.js'></script>
-    <script src='js/panel.js'></script>
-    <script src='js/game.js'></script>
-    <script src='js/saved.js'></script>
+  </div>
+  <script src='node_modules/jquery/dist/jquery.js'></script>
+  <script src='ui.js'></script>
+  <script src='js/app.js'></script>
+  <script src='js/presets.js'></script>
+  <script src='js/panel.js'></script>
+  <script src='js/game.js'></script>
+  <script src='js/intro.js'></script>
 </body>
 
 </html>

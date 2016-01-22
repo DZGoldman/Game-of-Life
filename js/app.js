@@ -27,7 +27,7 @@ var $board = $('#board'),
       })
     };
 
-    function shuffle(array) {
+function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
 
   // While there remain elements to shuffle...
@@ -42,6 +42,15 @@ var $board = $('#board'),
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
   }
-
   return array;
+};
+
+//stolen from stack overflow:
+function split(a, n) {
+    var len = a.length,out = [], i = 0;
+    while (i < len) {
+        var size = Math.ceil((len - i) / n--);
+        out.push(a.slice(i, i += size));
+    }
+    return out;
 }

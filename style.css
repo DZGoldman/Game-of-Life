@@ -36,7 +36,8 @@ body{
   margin-left: 100px;
   font-size: 0px;
   /*width: 75%;*/
-  display: inline-block
+  display: inline-block;
+  z-index: 200
 }
 
 #live-cell-count{
@@ -105,7 +106,8 @@ body{
   margin-right: 30px;
   font-size: 15px;
   font-weight: bold;
-  opacity: 0
+  opacity: 0;
+  z-index: -1
 }
 
 #info-toggler:hover ~ .all-except-info{

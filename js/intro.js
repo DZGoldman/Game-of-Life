@@ -5,6 +5,7 @@ $(function () {
     $panel.css('opacity', 1)
     $panel.show(300, function () {
       $('#info-toggler').toggle()
+      console.log('now');
       play(0.1)
     })
   },4000)
@@ -20,7 +21,6 @@ var counter = 0
       window.clearInterval(intervalID)
     }
   }, 50);
-
   // $('#info-toggler').hover(function () {
   //   $('#all-except-info').css('opacity', 0.3);
   //   $info.css('opacity', 1);
@@ -29,8 +29,7 @@ var counter = 0
   //   $('#all-except-info').css('opacity', 1)
   //   $info.toggle()
   // })
-
-  // $info.css('width', $(window).height()/5)
+    // $info.css('width', $(window).height()/5)
 
 }) // end on load
 
@@ -237,21 +236,10 @@ var gameOfLife = [
 [35, 36],
 [36, 36],
 [37, 36]
-]
+];
 
 var length = gameOfLife.length
 var randomArray = shuffle(gameOfLife)
-
-//stolen from stack overflow:
-function split(a, n) {
-    var len = a.length,out = [], i = 0;
-    while (i < len) {
-        var size = Math.ceil((len - i) / n--);
-        out.push(a.slice(i, i += size));
-    }
-    return out;
-}
-
 
 function loadGrid(coordinates) {
   coordinates.forEach(function (coordinate) {

@@ -2,9 +2,11 @@
 //set interval function, runs game. with each iteration, checks neighbors of all cells
 
 $(function () {
+  console.log('so loaded bro');
   var holdingMouse = false
   //toggle cell on click
   $board.mousedown(function (e) {
+    console.log('you just clicked');
     holdingMouse = true
     var clickedCell =$(e.toElement)
     var column = clickedCell.attr('column')
@@ -164,17 +166,4 @@ function liveCellCount() {
     }
   })
   return liveCells
-}
-
-function save() {
-  var liveCells = [];
-  twoDLoop(board, function (cell) {
-    if (cell.status) {
-      liveCells.push( [cell.column, cell.row] )
-      console.log([cell.column, cell.row]);
-    }
-  })
-  return liveCells
-
-
 }

@@ -35,6 +35,35 @@ $(function () {
   })
   $timeSlider.slider( "value", 0.1 )
 
+
+  //menu
+  var $menu= $('#menu')
+  $menu.change(function () {
+    clear()
+    switch (    $(this).val()) {
+      case "Gliders":
+      slider.slider( "option", "value", 75 )
+        loadGrid(gliders)
+        break;
+      case "Glider Gun":
+      slider.slider( "option", "value", 100 )
+        $timeSlider.slider( "value", 0.01 )
+        loadGrid(gliderGun)
+        break;
+      case "Acorn":
+
+        break;
+      case "Line":
+
+        break;
+      default:
+        console.log('default');
+        break
+    }
+  });
+
+
+  // buttons
   $('#pause').click(function () {
     pause()
   })
@@ -65,7 +94,6 @@ var Cell = function (row,column, $cell) {
   this.status=0;
   this.$cell=$cell;
 }
-
 
 function createCells(number) {
   $board.empty();
