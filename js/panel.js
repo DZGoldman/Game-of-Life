@@ -118,6 +118,7 @@ function createCells(number) {
         $cell.css('border-right', '1px solid black')
       }
       $cell.addClass('cell')
+      $cell.css('background-color', deadColor)
       $cell.attr('row', i);
       $cell.attr('column', j)
       //0=dead, 1=alive
