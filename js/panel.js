@@ -2,9 +2,11 @@
 
 $(function () {
 
-  $board.css('width', boardWidth)
+
+  $board.css('width', boardHeight)
   $board.css('height', boardHeight)
 
+  //board-size slider
   slider.slider({
     min: 10,
     max: 100,
@@ -36,7 +38,7 @@ $(function () {
   $timeSlider.slider( "value", 0.1 )
 
 
-  //menu
+  // presets menu:
   var $menu= $('#menu')
   $menu.change(function () {
     clear()
@@ -95,32 +97,39 @@ var Cell = function (row,column, $cell) {
   this.$cell=$cell;
 }
 
+//make board cells - html and back-end 2D array. Acticated when slider moves
 function createCells(number) {
   $board.empty();
   board =[]
   for (var i = 0; i < number; i++) {
     //backend:
     var row = []
-    //make rows
+    //front end
     var $row = $('<div>');
     $row.addClass('row');
     for (var j = 0; j < number; j++) {
-
       //make each cell
       var $cell= $('<div>')
+      // this is a solution to the "pixel borders doubling up in a grid" problem and it's a breakthrough in css theory and I deserve recongniztion:
+      if (i==0) {
+        $cell.css('border-top', '1px solid black')
+      }
+      if (j==number-1) {
+        $cell.css('border-right', '1px solid black')
+      }
       $cell.addClass('cell')
       $cell.attr('row', i);
       $cell.attr('column', j)
       //0=dead, 1=alive
       $cell.attr('status', 0)
-      //the -2 is twice the border pixel size
-      var cellWidth = Math.floor(( boardWidth)/number )-2
+      //the -1 is to account for the border pixels
+      var cellWidth = Math.floor(( boardWidth)/number )-1
       $cell.width(cellWidth)
       $cell.height(cellWidth)
       $row.append($cell)
+      //backend
       var cell = new Cell(i, j, $cell)
       row.push(cell)
-
     }
     board.push(row)
     $board.append($row)

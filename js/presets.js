@@ -10,6 +10,7 @@ function save() {
   return liveCells
 }
 
+//put preset grid onto board
 function loadGrid(coordinates) {
   coordinates.forEach(function (coordinate) {
     var column = coordinate[0]
@@ -25,6 +26,7 @@ function loadGrid(coordinates) {
   $('#live-cell-count').text(liveCellCount())
 }
 
+//the preset grids, because databases are for quiters:
 var gliderGun = [
 [30, 4],
 [28, 5],

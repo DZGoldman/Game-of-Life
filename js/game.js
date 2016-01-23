@@ -1,8 +1,7 @@
-//toggle live/dead on click
-//set interval function, runs game. with each iteration, checks neighbors of all cells
+//Main functions for the game are in this file
 
 $(function () {
-  console.log('so loaded bro');
+  //add click events to the board; mousedown and mouse up are split so you can hold a click when coloring the board
   var holdingMouse = false
   //toggle cell on click
   $board.mousedown(function (e) {
@@ -26,41 +25,47 @@ $(function () {
       var row = clickedCell.attr('row')
       board[row][column].toggle()
     }
-
   })
-
-
-
 }) // end on load
 var intervalID
+//keep track of whether or not the game is currently running
 var running = false
+//play the game, takes timing as input
 function play(step) {
   if (!running) {
     blinker()
-    // typeof step=='undefined'? step=0.3: 'hi'
     intervalID = window.setInterval(function () {
       updateBoard()
     }, step*1000);
     running = true
   }
-
+}
+//make pause button blink when game is running:
+var blinkerID
+function blinker() {
+  blinkerID=window.setInterval(function () {
+    $pause.css('background-color', 'red')
+    window.setTimeout(function () {
+      $pause.css('background-color', 'white')
+    },100)
+  }, 1000)
 }
 
+//pause simulation
 function pause() {
   window.clearInterval(blinkerID)
   window.clearInterval(intervalID);
   running= false
 }
 
+//activates when slider moves:
 function changeTempo(newTempo) {
-
   pause()
   play(newTempo)
-
 }
 
 
-//toggle live/dead for a cell
+//toggle live/dead for a cell - function given to cell objects
 Cell.prototype.toggle = function () {
   switch (this.status) {
     case 0:
@@ -76,6 +81,7 @@ Cell.prototype.toggle = function () {
   }
 }
 
+//This produces an array of the relative indices of cells around a cell...or something. It gets used in live neighbor count
 var allIndices=[];
 [-1,0,1].forEach(function (column) {
   [-1,0,1].forEach(function (row) {
@@ -85,6 +91,7 @@ var allIndices=[];
   })
 })
 
+//returns the live neighbors of a cell
 Cell.prototype.liveNeighborCount = function () {
   var liveNeighbors = 0
   var column = this.column
@@ -103,7 +110,7 @@ Cell.prototype.liveNeighborCount = function () {
 }
 
 
-
+//put random arrangement on the board
 function randomize() {
   clear()
   twoDLoop(board, function (cell) {
@@ -116,9 +123,9 @@ function randomize() {
   return count
 }
 
+//update by one step - used primarily in play(). This is where the actual rules are implemented; could easily turn this into some other cellular automaton by altering this, if you were so inclined.
 function updateBoard() {
   var toBeToggled = [];
-
   twoDLoop(board, function (cell) {
     switch (cell.status) {
       case 1:
@@ -139,15 +146,16 @@ function updateBoard() {
   toBeToggled.forEach(function (cell) {
     cell.toggle()
   })
-
-  if (toBeToggled.length==0) {
-    pause()
-  }
+  //Next three lines, now commented out, turn off the simulation when it is static. As it is now, the simulation just keeps running, so if it's all static, you can still mess with it by clicking.
+  // if (toBeToggled.length==0) {
+  //   pause()
+  // }
   var count= liveCellCount()
   $('#live-cell-count').text(count)
   return count
 }
 
+//clear the board
 function clear() {
   pause();
   twoDLoop(board,function (cell) {
@@ -158,6 +166,7 @@ function clear() {
   $('#live-cell-count').text(0)
 }
 
+//count live cells on the board
 function liveCellCount() {
   liveCells = 0
   twoDLoop(board, function (cell) {

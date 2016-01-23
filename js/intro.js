@@ -1,6 +1,6 @@
-
+//Intro animation stuff is in here
 $(function () {
-
+  //panel appears at the right time
   window.setTimeout(function () {
     $panel.css('opacity', 1)
     $panel.show(300, function () {
@@ -10,6 +10,7 @@ $(function () {
     })
   },4000)
 
+//this splits the array into n pieces (40 for now), and loads them piece by piece, so you get that sexy staggered load effect.
 var pieces = split(randomArray, 40)
 var counter = 0
   var intervalID = window.setInterval(function () {
@@ -21,29 +22,10 @@ var counter = 0
       window.clearInterval(intervalID)
     }
   }, 50);
-  // $('#info-toggler').hover(function () {
-  //   $('#all-except-info').css('opacity', 0.3);
-  //   $info.css('opacity', 1);
-  //   $info.toggle()
-  // }, function () {
-  //   $('#all-except-info').css('opacity', 1)
-  //   $info.toggle()
-  // })
-    // $info.css('width', $(window).height()/5)
-
 }) // end on load
 
-var blinkerID
-function blinker() {
-  blinkerID=window.setInterval(function () {
-    $pause.css('background-color', 'red')
-    window.setTimeout(function () {
-      $pause.css('background-color', 'white')
-    },100)
-  }, 1000)
-}
 
-
+//board for the GAME OF LIFE
 var gameOfLife = [
 [12, 5],
 [13, 5],
@@ -240,4 +222,3 @@ var gameOfLife = [
 
 var length = gameOfLife.length
 var randomArray = shuffle(gameOfLife)
- 

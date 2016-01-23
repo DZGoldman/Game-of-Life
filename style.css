@@ -5,7 +5,7 @@
   background-color: darkgrey;
   border-radius: 20px;
   /*color: lightblue*/
-  opacity: 0
+  opacity: 0;
 }
 
  #time-slider, #size-slider{
@@ -46,7 +46,8 @@ body{
 
 .cell {
   float: left;
-  border: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .row {
@@ -72,7 +73,7 @@ body{
 }
 
 #live-cell-count{
-  width: 25px;
+  width: 35px;
 }
 
 .time-readout{
@@ -81,6 +82,12 @@ body{
 .button{
   background-color: white;
   font-family: 'Exo', sans-serif;
+}
+
+@media (max-width: 1000px) {
+  .button, .label, .readout{
+    display: block !important;
+  }
 }
 
 #info-toggler{
@@ -119,5 +126,15 @@ body{
 #info-toggler:hover ~ #info{
   opacity: 1;
   -webkit-transition: opacity 200ms ease-out
+
+}
+
+#menu{
+  margin: 10px
+  width: 20px;
+}
+
+.size-readout{
+  width: 70px
 
 }
