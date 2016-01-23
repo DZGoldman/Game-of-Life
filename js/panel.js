@@ -12,14 +12,15 @@ $(function () {
     max: 100,
     step: 1,
   });
-
   slider.slider({
     change: function( event, ui ) {
       createCells(ui.value)
       $('.size-readout').text(ui.value+'x'+ui.value)
     }
   })
+
   slider.slider( "value", 50 )
+  // var deadColor = 'grey'
 
   $timeSlider.slider({
     min: 0.01,

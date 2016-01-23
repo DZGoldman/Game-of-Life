@@ -15,7 +15,7 @@ var boardHeight = boardWidth
   //don't ask:
 $panel.toggle()
 var liveColor = 'blue'
-var deadColor = 'grey';
+var deadColor = 'black';
 
 //Helper functions:
 //Loop through a 2D array:

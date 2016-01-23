@@ -3,7 +3,8 @@ $(function () {
   //panel appears at the right time
   window.setTimeout(function () {
     $panel.css('opacity', 1)
-    $panel.show(300, function () {
+    $panel.fadeIn(200, function () {
+
       $('#info-toggler').toggle()
       console.log('now');
       play(0.1)
@@ -19,9 +20,22 @@ var counter = 0
       counter++
 
     }else{
+      //after 'GAME of LIFE' is on board, set the dead cells to their standard background color at random time
+      window.setTimeout(function () {
+        $('.cell').each(function (index, cell) {
+        deadColor = 'grey'
+        var $cell = $(cell)
+        if ($cell.attr('status')==0) {
+          window.setTimeout(function () {
+            $cell.css('background-color', deadColor)
+          },700*Math.random())
+
+        }
+      })
+    },1000)
       window.clearInterval(intervalID)
     }
-  }, 50);
+  }, 40);
 }) // end on load
 
 
