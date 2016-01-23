@@ -240,17 +240,4 @@ var gameOfLife = [
 
 var length = gameOfLife.length
 var randomArray = shuffle(gameOfLife)
-
-function loadGrid(coordinates) {
-  coordinates.forEach(function (coordinate) {
-    var column = coordinate[0]
-    var row = coordinate[1]
-    var cell = board[row][column]
-
-    cell.status=1;
-    cell.$cell.attr('status', 1);
-    cell.$cell.animate({
-      backgroundColor: liveColor
-    }, 200 );
-  })
-}
+ 

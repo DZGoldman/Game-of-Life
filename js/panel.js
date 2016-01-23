@@ -42,19 +42,26 @@ $(function () {
     clear()
     switch (    $(this).val()) {
       case "Gliders":
-      slider.slider( "option", "value", 75 )
+        slider.slider( "option", "value", 75 )
         loadGrid(gliders)
         break;
       case "Glider Gun":
-      slider.slider( "option", "value", 100 )
+        slider.slider( "option", "value", 100 )
         $timeSlider.slider( "value", 0.01 )
+        $('.time-readout').text(0.01)
         loadGrid(gliderGun)
         break;
       case "Acorn":
-
+        slider.slider( "option", "value", 100 )
+        $timeSlider.slider( "value", 0.01 )
+        $('.time-readout').text(0.01)
+        loadGrid(acorn)
         break;
       case "Line":
-
+        slider.slider( "option", "value", 100 )
+        $timeSlider.slider( "value", 0.01 )
+        $('.time-readout').text(0.01)
+        loadGrid(line)
         break;
       default:
         console.log('default');
@@ -62,29 +69,22 @@ $(function () {
     }
   });
 
-
   // buttons
   $('#pause').click(function () {
     pause()
   })
-
   $('#clear').click(function () {
     clear()
   })
-
   $('#step').click(function () {
     updateBoard()
   })
-
   $('#random').click(function () {
     randomize()
   })
-
   $('#play').click(function () {
     play($timeSlider.slider('value'))
   })
-
-
 }) //end onload
 
 var Cell = function (row,column, $cell) {
