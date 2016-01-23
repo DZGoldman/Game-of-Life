@@ -117,6 +117,11 @@ body{
   z-index: -1
 }
 
+.all-except-info{
+  width: 1000px;
+  /*width: 100%*/
+}
+
 #info-toggler:hover ~ .all-except-info{
   opacity: 0.05 !important;
   -webkit-transition: opacity 200ms ease-out
