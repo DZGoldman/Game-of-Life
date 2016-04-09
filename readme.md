@@ -4,7 +4,7 @@ With each step, a cell’s status is dependent on the status of its neighbors (w
 - If a live cell has two or three live neighbors, it stays alive; otherwise it dies.
 - If a dead cell has two live neighbors it becomes live; otherwise it stays dead.
 
- The surprising complexity and intricacy of a Game of Life system’s behavior — even, often times, under seemingly simple initial conditions — has attracted research from a wide variety of academic fields, including Computer Science, Mathematics, Physics,
+The surprising complexity and intricacy of a Game of Life system’s behavior — even, often times, under seemingly simple initial conditions — has attracted research from a wide variety of academic fields, including Computer Science, Mathematics, Physics,
 Economics, Evolutionary Biology, and more.
 
  This particular implementation of the Game of Life was created with the following technologies:
